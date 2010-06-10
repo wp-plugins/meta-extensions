@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: scott royalty, paul mohler
+Contributors: sroyalty, paul mohler
 Donate link: http://www.premiumdigitalservices.net/blog
 Tags: meta, meta fields, custom fields, fields, posts
 Requires at least: 2.0.2
@@ -23,6 +23,10 @@ Now while that may seem enough to make this a popular plugin, there is more. Met
 fields to auto add tags based on field title or content (explained in the readme). It also allows you to set up 
 checkboxes to add a post to/remove from a category automatically as wanted. All from the single Conf.ini file included 
 with the plugin.
+
+Related Links:
+
+* <a href="http://www.premiumdigitalservices.net/blog/" title="Meta Extensions Plugin for WordPress">Plugin Homepage</a>
 
 == Installation ==
 
@@ -178,6 +182,7 @@ Meta Extensions WordTube Class:
 
 
 = Code Examples =
+`
 <div id="meta-ext-test">
 	<?php if ( metaext::get_value_metaext(get_the_ID(), 'the_gallery') ) : ?>
 		<h2>Test for Galleries using Meta Extensions with NextGen Gallery</h2>
@@ -194,3 +199,4 @@ Meta Extensions WordTube Class:
 		<?php metaext_wpdm::show_metaext_downloadlink(metaext::get_value_metaext(get_the_ID(), 'the_download')) ?>
 	<?php endif; ?>
 </div>
+`
