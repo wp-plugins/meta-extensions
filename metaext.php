@@ -4,7 +4,7 @@ Plugin Name: Meta Extension
 Plugin URI: http://www.premiumdigitalservices.net
 Description: Plugin system for adding new fields to the edit post page including integration for NextGen Gallery, Wordtube and other popular content plugins.
 Author: Scott E. Royalty
-Version: 1.0.2
+Version: 1.0.3
 Author URI: http://www.premiumdigitalservices.net
 */ 
 

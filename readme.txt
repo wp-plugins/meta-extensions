@@ -4,7 +4,7 @@ Donate link: http://www.premiumdigitalservices.net/blog
 Tags: meta, meta fields, custom fields, fields, posts
 Requires at least: 2.0.2
 Tested up to: 3.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 Allows adding custom form fields to posts, storing them in custom meta fields. Integrates NGG, WT, and WP-DM.
 
@@ -23,6 +23,11 @@ Now while that may seem enough to make this a popular plugin, there is more. Met
 fields to auto add tags based on field title or content (explained in the readme). It also allows you to set up 
 checkboxes to add a post to/remove from a category automatically as wanted. All from the single conf.txt file included 
 with the plugin.
+
+One of the latest features is the ability to place conf.txt in your current theme's directory. By placing conf.txt in
+the theme directories this allows you to run the plugin with multiple themes on your site and have custom conf.txt per
+theme to only show the specific fields needed in that theme. If the file is not in the theme directory, it pulls from
+the default conf.txt in the plugin's directory.
 
 Related Links:
 
@@ -54,6 +59,11 @@ A: Not yet, possible in future versions.
 
 = 1.0.2 =
 * Fixed linebreaks with subtitles in several types.
+
+= 1.0.3 =
+* Changed html layout to match admin panel boxes.
+* Now uses current theme name in the title box.
+* Checks for conf.txt in current theme's directory first. If exists, uses that one. If not, defaults to one in plugin directory.
 
 == Upgrade Notice ==
 

@@ -51,21 +51,25 @@ class metaext {
 	interaction for the plugin with the administrative features.
 	
 */
-  function sanitize_name( $name ) {
-    $name = sanitize_title( $name ); // taken from WP's wp-includes/functions-formatting.php
-    $name = str_replace( '-', '_', $name );
-    
-    return $name;
-  }
+	function sanitize_name( $name ) {
+		$name = sanitize_title( $name ); // taken from WP's wp-includes/functions-formatting.php
+		$name = str_replace( '-', '_', $name );
+
+		return $name;
+	}
   
-  function load_conf_file() {
-    $file = dirname( __FILE__ ) . '/conf.txt';
-    if ( !file_exists( $file ) )
-    	return null;
-    	
-    $custom_fields = parse_ini_file( $file, true );
-    return $custom_fields;
-  }
+	function load_conf_file() {
+		$file = get_template_directory() . '/conf.txt';
+		if ( !file_exists( $file ) )
+		{
+			$file = dirname( __FILE__ ) . '/conf.txt';
+		}
+		if ( !file_exists( $file ) )
+			return null;
+			
+		$custom_fields = parse_ini_file( $file, true );
+		return $custom_fields;
+	}
   
   function make_textfield( $name, $size = 25, $subtitle = '' ) {
     $title = $name;
@@ -76,7 +80,7 @@ class metaext {
       $value = $value[ 0 ];
     }
 
-	$subtitle = '<br /><span>'.$subtitle.'</span>';
+	$subtitle = '<br /><span class="metaext-span">'.$subtitle.'</span>';
     
     $out = 
       '<tr>' .
@@ -100,7 +104,7 @@ class metaext {
       }    
     }
 
-	$subtitle = '<br /><span>'.$subtitle.'</span>';
+	$subtitle = '<br /><span class="metaext-span">'.$subtitle.'</span>';
     
     $out =
       '<tr>' .
@@ -127,7 +131,7 @@ class metaext {
       $selected = $default;
     }
 
-	$subtitle = '<br /><span>'.$subtitle.'</span>';
+	$subtitle = '<br /><span class="metaext-span">'.$subtitle.'</span>';
 	
     $out =
       '<tr>' .
@@ -159,7 +163,7 @@ class metaext {
       $selected = $selected[ 0 ];
     }
 
-	$subtitle = '<br /><span>'.$subtitle.'</span>';
+	$subtitle = '<br /><span class="metaext-span">'.$subtitle.'</span>';
     
     $out =
       '<tr>' .
@@ -187,7 +191,7 @@ class metaext {
 		  $selected = $selected[ 0 ];
 		}
 		
-		$subtitle = '<br /><span>'.$subtitle.'</span>';
+		$subtitle = '<br /><span class="metaext-span">'.$subtitle.'</span>';
 	
 		$out =
 		  '<tr>' .
@@ -215,7 +219,7 @@ class metaext {
 		  $selected = $selected[ 0 ];
 		}
 		
-		$subtitle = '<br /><span>'.$subtitle.'</span>';
+		$subtitle = '<br /><span class="metaext-span">'.$subtitle.'</span>';
 
 		$out =
 		  '<tr>' .
@@ -242,7 +246,7 @@ class metaext {
 			$selected = $default;
 		}
     
-		$subtitle = '<br /><span>'.$subtitle.'</span>';
+		$subtitle = '<br /><span class="metaext-span">'.$subtitle.'</span>';
 
 		$out =
 			'<tr>' .
@@ -271,7 +275,7 @@ class metaext {
       $value = $value[ 0 ];
     }
     
-	$subtitle = '<br /><span>'.$subtitle.'</span>';
+	$subtitle = '<br /><span class="metaext-span">'.$subtitle.'</span>';
 
     $out = 
       '<tr>' .
@@ -281,19 +285,24 @@ class metaext {
     return $out;
   }
 
-  function insert_gui() {
-    $fields = metaext::load_conf_file();
-    
-    if( $fields == null)
-    	return;
-    
-	$out = '<div id="metaext-container"><h2>Custom Meta Extension Fields</h2>';
-    $out .= '<input type="hidden" name="metaext-verify-key" id="metaext-verify-key"
-			value="' . wp_create_nonce('metaext') . '" />';
-    $out .= '<table class="metaext-editform">';
-    foreach( $fields as $title => $data ) {
-		switch($data[ 'type' ])
-		{
+	function insert_gui() {
+		$fields = metaext::load_conf_file();
+
+		if( $fields == null)
+			return;
+
+		$out = '<div id="metaext-container" class="postbox" >';
+		$out .= '<div class="handlediv" title="Click to toggle"><br /></div><h3 class="hndle"><span>' . get_template() . ' Custom Meta Extension Fields</span></h3>';
+		$out .= '<div class="inside">';
+		$out .= '<input type="hidden" name="metaext-verify-key" id="metaext-verify-key" value="' . wp_create_nonce('metaext') . '" />';
+		$out .= '<table class="metaext-editform">';
+/*		$out = '<div id="metaext-container"><h2>Custom Meta Extension Fields</h2>';
+		$out .= '<input type="hidden" name="metaext-verify-key" id="metaext-verify-key" value="' . wp_create_nonce('metaext') . '" />';
+		$out .= '<table class="metaext-editform">';
+*/
+		foreach( $fields as $title => $data ) {
+			switch($data[ 'type' ])
+			{
 			case 'textfield' : $out .= metaext::make_textfield( $title, $data[ 'size' ], $data[ 'subtitle' ] ); break;
 			case 'checkbox'  : $out .= metaext::make_checkbox( $title, $data[ 'default' ], $data[ 'subtitle' ] ); break;
 			case 'radio'     : $out .= metaext::make_radio( $title, explode( '#', $data[ 'value' ] ), $data[ 'default' ], $data[ 'subtitle' ] ); break;
@@ -302,12 +311,12 @@ class metaext {
 			case 'gallery'   : $out .= metaext::make_gallery_select( $title, $data[ 'subtitle' ] ); break;
 			case 'download'  : $out .= metaext::make_download_select( $title, $data[ 'subtitle' ] ); break;
 			case 'video'     : $out .= metaext::make_video_select( $title, $data[ 'subtitle' ] ); break;
+			}
 		}
-    }
-    
-    $out .= '</table></div>';
-    echo $out;
-  }
+
+		$out .= '</table></div></div>';
+		echo $out;
+	}
   
   function edit_meta_value( $id ) {
     global $wpdb;
