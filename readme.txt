@@ -1,17 +1,17 @@
 === Plugin Name ===
-Contributors: sroyalty, paul mohler
+Contributors: sroyalty
 Donate link: http://www.premiumdigitalservices.net/blog
 Tags: meta, meta fields, custom fields, fields, posts
 Requires at least: 2.0.2
 Tested up to: 3.0
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Allows adding custom form fields to posts, storing them in custom meta fields. Integrates NGG, WT, and WP-DM.
 
 == Description ==
 
 This plugin takes a simple concept of giving you fields to enter information that use the meta tags built into 
-Wordpress and expands on it. Modifying conf.ini in the plugin directory will allow you to enter custom fields to 
+Wordpress and expands on it. Modifying conf.txt in the plugin directory will allow you to enter custom fields to 
 the Posts pages to add textfields, textarea, dropdown selections, checkboxes, and radio selections.
 
 On top of all this simplicity, it also integrates several popular Wordpress plugins. With gallery selection for 
@@ -21,7 +21,7 @@ for downloads as well.
 
 Now while that may seem enough to make this a popular plugin, there is more. Meta Extensions allows you mark the 
 fields to auto add tags based on field title or content (explained in the readme). It also allows you to set up 
-checkboxes to add a post to/remove from a category automatically as wanted. All from the single Conf.ini file included 
+checkboxes to add a post to/remove from a category automatically as wanted. All from the single conf.txt file included 
 with the plugin.
 
 Related Links:
@@ -32,7 +32,7 @@ Related Links:
 
 1. Extract and upload the contents of the zip file to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Edit the conf.ini file in the plugin directory for the fields you want to set up.
+3. Edit the conf.txt file in the plugin directory for the fields you want to set up.
 4. Under Posts is where the new fields will populate.
 
 == Frequently Asked Questions ==
@@ -48,6 +48,9 @@ A: Not yet, possible in future versions.
 
 = 1.0 =
 * Initial public release.
+
+= 1.0.1 =
+* Upgraded to conf.txt instead of conf.txt for editing via the Plugin Editor.
 
 == Upgrade Notice ==
 
@@ -67,7 +70,7 @@ Filed/Element Types:
 	video     - HTML Form Select box to choose a Wordtube Video
 	download  - HTML Form Select box to choose a Wordpress Download Manager file
 
-To specify the custom fields, edit the file conf.ini
+To specify the custom fields, edit the file conf.txt
 
 Each entry begins with the subject inside square brackets. The second 
 line specifies its type. The third line, which only applies to type
@@ -131,7 +134,7 @@ Tag Design:
 	video     - Not handled
 
 = Useage =
-Once you build your conf.ini file, you are ready to start making posts
+Once you build your conf.txt file, you are ready to start making posts
 using the custom fields. In order to call these fields you can either
 use the built in get methods for post meta, or you can use the ones that
 I have added to the metaext class to keep your code clean and know what

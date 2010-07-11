@@ -59,7 +59,7 @@ class metaext {
   }
   
   function load_conf_file() {
-    $file = dirname( __FILE__ ) . '/conf.ini';
+    $file = dirname( __FILE__ ) . '/conf.txt';
     if ( !file_exists( $file ) )
     	return null;
     	
