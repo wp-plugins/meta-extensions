@@ -4,7 +4,7 @@ Donate link: http://www.premiumdigitalservices.net/blog
 Tags: meta, meta fields, custom fields, fields, posts
 Requires at least: 2.0.2
 Tested up to: 3.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Allows adding custom form fields to posts, storing them in custom meta fields. Integrates NGG, WT, and WP-DM.
 
@@ -51,6 +51,9 @@ A: Not yet, possible in future versions.
 
 = 1.0.1 =
 * Upgraded to conf.txt instead of conf.txt for editing via the Plugin Editor.
+
+= 1.0.2 =
+* Fixed linebreaks with subtitles in several types.
 
 == Upgrade Notice ==
 

@@ -158,6 +158,8 @@ class metaext {
       $selected = get_post_meta( $_REQUEST[ 'post' ], $title );
       $selected = $selected[ 0 ];
     }
+
+	$subtitle = '<br /><span>'.$subtitle.'</span>';
     
     $out =
       '<tr>' .
@@ -185,6 +187,8 @@ class metaext {
 		  $selected = $selected[ 0 ];
 		}
 		
+		$subtitle = '<br /><span>'.$subtitle.'</span>';
+	
 		$out =
 		  '<tr>' .
 		  '<th scope="row">' . $title . ' </th>' .
@@ -211,6 +215,8 @@ class metaext {
 		  $selected = $selected[ 0 ];
 		}
 		
+		$subtitle = '<br /><span>'.$subtitle.'</span>';
+
 		$out =
 		  '<tr>' .
 		  '<th scope="row">' . $title . ' </th>' .
@@ -236,6 +242,8 @@ class metaext {
 			$selected = $default;
 		}
     
+		$subtitle = '<br /><span>'.$subtitle.'</span>';
+
 		$out =
 			'<tr>' .
 			'<th scope="row">' . $title . ' </th>' .
